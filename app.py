@@ -11,14 +11,14 @@ def create_app():
     app.config.from_object(Config)
 
     # Configure CORS
-    frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
-    CORS(app, resources={
-        r"/api/*": {
-            "origins": [frontend_origin, "http://localhost:8000", "https://*.onrender.com"],
-            "methods": ["GET", "POST", "OPTIONS"],
-            "allow_headers": ["Content-Type"]
-        }
-    })
+frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [frontend_origin, "http://localhost:8000", "https://trendtracker-1.onrender.com"], # Removed the spaces
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
     db.init_app(app)
 
