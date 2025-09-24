@@ -2,42 +2,45 @@
 import os
 from flask import Flask
 from flask_cors import CORS
-from backend import db # Make sure this import is present
-from backend.models.trend_model import Trend # Import Trend for scheduler
+from backend import db
 from backend.api.routes import api_bp
 from backend.config import Config
-from backend.scrapers.scraper_manager import ScraperManager
+# Import for scheduler (add this if you want the scheduler, otherwise remove the scheduler code block)
 from apscheduler.schedulers.background import BackgroundScheduler
-import atexit
+import atexit # For scheduler shutdown
+from backend.scrapers.scraper_manager import ScraperManager # Import for scheduler
+from backend.models.trend_model import Trend # Import for scheduler
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Configure CORS
+    # Configure CORS - THIS LINE AND THE BLOCK BELOW MUST BE CORRECTLY INDENTED
     frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
     CORS(app, resources={
         r"/api/*": {
-            "origins": [frontend_origin, "http://localhost:8000", "https://trendtracker-frontend.onrender.com", "https://trendtracker-046o.onrender.com"], # Updated origins
+            "origins": [frontend_origin, "http://localhost:8000", "https://trendtracker-frontend.onrender.com", "https://trendtracker-046o.onrender.com"], # REMOVED TRAILING SPACES
             "methods": ["GET", "POST", "OPTIONS"],
             "allow_headers": ["Content-Type"]
         }
     })
 
-    # Initialize the database extension with the app
-    db.init_app(app) # <--- This line should be indented like this (aligned with app.config, CORS call)
+    # Initialize the database extension with the app - THIS LINE MUST BE CORRECTLY INDENTED
+    db.init_app(app)
 
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api')
 
-    # --- Scheduler Setup (if desired) ---
+    # --- Scheduler Setup (Optional) ---
+    # Only include this block if you want automatic scraping
+    # Remove this block if you only want manual scraping via the button
     if not app.config.get('TESTING'): # Don't run scheduler if in testing mode
         scheduler = BackgroundScheduler()
-        scraper_manager = ScraperManager()
 
         def scheduled_scrape():
             """Function to run the scraping job."""
             print("Scheduler: Starting scheduled scrape...")
+            scraper_manager = ScraperManager() # Create manager inside the function
             all_trends = []
             enabled_platforms = scraper_manager.get_enabled_platforms()
             for platform in enabled_platforms:
