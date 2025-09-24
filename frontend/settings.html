@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendTracker - Settings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">⚙️ TrendTracker Settings</h1>
+            <div class="header-right">
+                <a href="index.html" class="btn">🏠 Dashboard</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="settings-container">
+                <h2>Platform Configuration</h2>
+                <div id="platform-config"></div>
+
+                <h2>API Keys</h2>
+                <form id="api-keys-form">
+                    <div class="form-group">
+                        <label for="youtube-api-key">YouTube API Key:</label>
+                        <input type="password" id="youtube-api-key" name="youtube_api_key">
+                    </div>
+                    <div class="form-group">
+                        <label for="reddit-client-id">Reddit Client ID:</label>
+                        <input type="password" id="reddit-client-id" name="reddit_client_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="reddit-client-secret">Reddit Client Secret:</label>
+                        <input type="password" id="reddit-client-secret" name="reddit_client_secret">
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter-bearer-token">Twitter Bearer Token:</label>
+                        <input type="password" id="twitter-bearer-token" name="twitter_bearer_token">
+                    </div>
+                    <div class="form-group">
+                        <label for="tiktok-api-key">TikTok API Key:</label>
+                        <input type="password" id="tiktok-api-key" name="tiktok_api_key">
+                    </div>
+                    <button type="submit" class="btn primary">💾 Save Configuration</button>
+                </form>
+
+                <h2>Test API Connections</h2>
+                <div id="test-api-buttons">
+                    <button id="test-youtube-btn" class="btn">Test YouTube</button>
+                    <button id="test-reddit-btn" class="btn">Test Reddit</button>
+                    <!-- Add buttons for other platforms when implemented -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/settings.js"></script>
+</body>
+</html>

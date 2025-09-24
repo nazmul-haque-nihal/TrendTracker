@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendTracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">🔥 TrendTracker</h1>
+            <div class="header-right">
+                <button id="refreshBtn" class="btn">🔄 Refresh</button>
+                <button id="scrapeBtn" class="btn primary">🕷️ Scrape New</button>
+                <a href="settings.html" class="btn">⚙️ Settings</a>
+            </div>
+        </header>
+
+        <main>
+            <div id="filters-container"></div>
+            <div id="trends-container">
+                <p id="loading-message">Loading trends...</p>
+                <div id="trends-list" class="trends-grid"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
