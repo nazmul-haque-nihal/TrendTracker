@@ -1,8 +1,9 @@
 // frontend/js/settings.js
 console.log("Settings page loaded");
 
-// Use localhost for local development, Render URL for production
-const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://your-render-app-name.onrender.com';
+// Use localhost for local development, Render API URL for production
+// Replace 'https://trendtracker-046o.onrender.com' with YOUR actual Render API URL
+const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://trendtracker-046o.onrender.com';
 
 // DOM Elements
 const platformConfigContainer = document.getElementById('platform-config');
