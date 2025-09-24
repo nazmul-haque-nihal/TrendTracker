@@ -15,15 +15,20 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Configure CORS - THIS LINE AND THE BLOCK BELOW MUST BE CORRECTLY INDENTED
-    frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
-    CORS(app, resources={
-        r"/api/*": {
-            "origins": [frontend_origin, "http://localhost:8000", "https://trendtracker-frontend.onrender.com", "https://trendtracker-046o.onrender.com"], # REMOVED TRAILING SPACES
-            "methods": ["GET", "POST", "OPTIONS"],
-            "allow_headers": ["Content-Type"]
-        }
-    })
+    # Configure CORS
+frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            frontend_origin, # This should ideally be set via env var to 'https://trendtracker-1.onrender.com'
+            "http://localhost:8000", # For local development
+            "https://trendtracker-1.onrender.com", # <-- Your actual frontend URL
+            "https://trendtracker-046o.onrender.com" # <-- Your actual backend URL (sometimes needed)
+        ],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
     # Initialize the database extension with the app - THIS LINE MUST BE CORRECTLY INDENTED
     db.init_app(app)
