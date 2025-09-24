@@ -31,8 +31,12 @@ def create_app():
 
     return app
 
+# *** CRITICAL LINE FOR GUNICORN ***
+# Create the application instance that Gunicorn can reference
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
+    # This block runs only if you execute `python app.py` locally
     with app.app_context():
         db.create_all()
     port = int(os.environ.get('PORT', 5000))
