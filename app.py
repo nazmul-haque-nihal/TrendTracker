@@ -16,26 +16,22 @@ def create_app():
     app.config.from_object(Config)
 
     # Configure CORS
-frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            frontend_origin, # This should ideally be set via env var to 'https://trendtracker-1.onrender.com'
-            "http://localhost:8000", # For local development
-            "https://trendtracker-1.onrender.com", # <-- Your actual frontend URL
-            "https://trendtracker-046o.onrender.com" # <-- Your actual backend URL (sometimes needed)
-        ],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+    frontend_origin = os.environ.get('FRONTEND_URL', 'http://localhost:8000')
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": [frontend_origin, "http://localhost:8000", "https://trendtracker-1.onrender.com", "https://trendtracker-046o.onrender.com"], # Use your actual backend URL here
+            "methods": ["GET", "POST", "OPTIONS"],
+            "allow_headers": ["Content-Type"]
+        }
+    })
 
-    # Initialize the database extension with the app - THIS LINE MUST BE CORRECTLY INDENTED
+    # Initialize the database extension with the app - CORRECT INDENTATION
     db.init_app(app)
 
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api')
 
+    # ... rest of the function ...
     # --- Scheduler Setup (Optional) ---
     # Only include this block if you want automatic scraping
     # Remove this block if you only want manual scraping via the button
