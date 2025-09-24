@@ -4,4 +4,6 @@ Flask-SQLAlchemy==3.0.5
 requests==2.31.0
 gunicorn==20.1.0
 python-dotenv==1.0.0
-praw==7.7.1 # For Reddit API
+praw==7.7.1
+# Add the PostgreSQL adapter for SQLAlchemy
+psycopg2-binary==2.9.9
