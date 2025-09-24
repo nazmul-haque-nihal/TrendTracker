@@ -9,11 +9,13 @@
 
 **A real-time dashboard for discovering the latest viral content across YouTube, Reddit, and more.**
 
-[Live Demo (Backend API)](https://trendtracker-046o.onrender.com) | [Live Demo (Frontend Dashboard)](https://trendtracker-1.onrender.com)
+<img width="1572" height="904" alt="trend3" src="https://github.com/user-attachments/assets/962202a0-3e3a-42b5-af0d-fbafec9a6257" />
 
-</div>
 
----
+https://github.com/user-attachments/assets/7a3e0968-2185-4294-bcd0-e58b523e92b7
+
+
+
 
 ## 🚀 Overview
 
